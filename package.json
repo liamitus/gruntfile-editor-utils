@@ -1,0 +1,16 @@
+{
+  "name": "gruntfile-editor-utils",
+  "version": "0.1.0",
+  "description": "Utility methods for interacting with an existing gruntfile.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gruntfile",
+    "editor",
+    "utilities"
+  ],
+  "author": "Liam Howell <lhowell@mobiquityinc.com>",
+  "license": "MIT"
+}
