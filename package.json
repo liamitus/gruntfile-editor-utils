@@ -1,6 +1,6 @@
 {
   "name": "gruntfile-editor-utils",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Utility methods for interacting with an existing gruntfile.",
   "main": "index.js",
   "scripts": {
@@ -12,5 +12,11 @@
     "utilities"
   ],
   "author": "Liam Howell <lhowell@mobiquityinc.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ast-query": "^0.3.0",
+    "escodegen": "^1.4.1",
+    "lodash": "^2.4.1",
+    "mocha": "^2.0.1"
+  }
 }
