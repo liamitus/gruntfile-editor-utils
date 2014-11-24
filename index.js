@@ -2,10 +2,11 @@
  * Holds utility methods for interacting with an existing Gruntfile.js.
  *
  * Author:	Liam Howell <lhowell@mobiquityinc.com>
- * Since:	11-13-2014
+ * Since:	11-18-2014
  */
 
 var _ = require("lodash");
+var fs = require("fs");
 
 /**
  * Accepts an invalid JSON string and makes it valid.
@@ -19,6 +20,7 @@ function makeValidJSON(invalidJSON) {
 }
 
 module.exports = {
+
     /**
      * Extracts the given config from the given gruntfile String.
      * Returns the value of the key extracted (typically an object).
@@ -118,5 +120,40 @@ module.exports = {
         } else {
             return "";
         }
+    },
+
+    /**
+     * Copies a given file to a given location.
+     * Accepts the full path to the file and the full path to the destination.
+     * Also accepts an optional callback function.
+     *
+     * Thanks to stackoverflow user Mike Schilling
+     * http://stackoverflow.com/questions/11293857/fastest-way-to-copy-file-in-node-js#answer-14387791
+     */
+    copyFile: function (source, target, cb) {
+        var cbCalled = false;
+
+        var rd = fs.createReadStream(source);
+        rd.on("error", function(err) {
+            done(err);
+        });
+        var wr = fs.createWriteStream(target);
+        wr.on("error", function(err) {
+            done(err);
+        });
+        wr.on("close", function(ex) {
+            done();
+        });
+        rd.pipe(wr);
+
+        function done(err) {
+            if (!cbCalled) {
+                if (cb) {
+                    cb(err);
+                }
+                cbCalled = true;
+            }
+        }
     }
+
 };
